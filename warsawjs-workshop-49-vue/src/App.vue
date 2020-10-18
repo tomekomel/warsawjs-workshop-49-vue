@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title }}</h1>
+
+    <div id="blog-list" v-for="post in posts">
+    <h2>{{ post.title }}</h2>
+    <strong>{{ post.author }} | {{ post.date }}</strong>
+    <p>{{ post.text }}</p>
+  </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      title: 'Warsaw JS',
+      posts: [
+        {
+          date: '12/12/2020',
+          author: 'Tomek',
+          title: 'First Article Title',
+          text: 'Hello world!!!',
+        },
+        {
+          date: '12/12/2020',
+          author: 'Tomek',
+          title: 'Second Article Title',
+          text: 'Hello world!!!',
+        },
+      ]
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

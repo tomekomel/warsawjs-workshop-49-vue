@@ -1,4 +1,4 @@
-# warsawjs-workshop-49-vue
+n# warsawjs-workshop-49-vue
 WarsawJS workshop, live coding - https://codesandbox.io/s/warsawjs-workshop-49-vue-j7wn0
 
 ### Project setup

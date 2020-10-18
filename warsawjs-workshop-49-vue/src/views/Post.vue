@@ -9,29 +9,18 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   created() {
     const { postId } = this.$route.params;
-    let post;
-    fetch(`https://sheets.googleapis.com/v4/spreadsheets/1dczQXlQVP1-Ps96gNMVlB0JjIL7caB9E5nQHB4iWo5Q/values/POSTS!A${ postId }:D${ postId }?key=AIzaSyAtgGjAz3Vk3wFJmoRPYuuRCEwRZpeFy0g`)
-        .then(res => res.json())
-        .then(res => {
-          const result = res.values[0];
-          post = {
-            title: result[0],
-            author: result[1],
-            date: result[2],
-            text: result[3],
-          }
-          this.post = post;
-        })
-        .catch(err => console.error(err));
-    console.log(postId);
+    this.getPostById(postId);
   },
+  computed: mapState('blog', ['post']),
+  methods: mapActions('blog', ['getPostById']),
   data() {
     return {
       title: 'Warsaw JS',
-      post: {},
       divStyle: 'color: grey',
     }
   }
